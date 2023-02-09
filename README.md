@@ -3,6 +3,6 @@
 
 1. 优酷菜单
 
-2.ViewPaper的广告轮播
+2. ViewPaper的广告轮播
 
 3.
