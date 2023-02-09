@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".YouKuMenuMainActivity">
+
+    <RelativeLayout
+        android:id="@+id/menu_level3"
+        android:background="@drawable/level3"
+        android:layout_width="280dp"
+        android:layout_height="140dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/menu_level3_channel1"
+            android:src="@drawable/channel1"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level3_channel2"
+            android:src="@drawable/channel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/menu_level3_channel1"
+            android:layout_marginStart="24dp" />
+
+        <ImageView
+            android:id="@+id/menu_level3_channel3"
+            android:src="@drawable/channel3"
+            android:layout_above="@id/menu_level3_channel2"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="-10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level3_channel4"
+            android:src="@drawable/channel4"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level3_channel5"
+            android:src="@drawable/channel5"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="-10dp"
+            android:layout_above="@id/menu_level3_channel6"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level3_channel6"
+            android:layout_above="@id/menu_level3_channel7"
+            android:src="@drawable/channel6"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level3_channel7"
+            android:src="@drawable/channel7"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/menu_level2"
+        android:background="@drawable/level2"
+        android:layout_width="180dp"
+        android:layout_height="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/menu_level2_myyouku"
+            android:src="@drawable/icon_myyouku"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/menu_level2_menu"
+            android:src="@drawable/icon_menu"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <ImageView
+            android:id="@+id/menu_level2_search"
+            android:src="@drawable/icon_search"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/menu_level1"
+        android:background="@drawable/level1"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/menu_level1_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/icon_home" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
