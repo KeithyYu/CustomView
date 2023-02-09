@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "CustomView"
 include ':app'
-include ':youkumenu'
+include ':01youkumenu'
 include ':02guanggao'
