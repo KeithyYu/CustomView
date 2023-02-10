@@ -6,3 +6,5 @@
 2. ViewPaper的广告轮播
 
 3. PopupWindow 下拉框
+
+4. 自定义滑动开关
