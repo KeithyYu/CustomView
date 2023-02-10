@@ -16,3 +16,4 @@ rootProject.name = "CustomView"
 include ':app'
 include ':01youkumenu'
 include ':02guanggao'
+include ':03popupwindow'
