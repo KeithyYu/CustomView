@@ -1,5 +1,6 @@
 package com.guangkai.contactquickindex
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,10 +9,15 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        private val TAG = MainActivity::class.simpleName
+    }
+
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mTextView: TextView
     private lateinit var mQuicklyIndex: QuicklyIndex
@@ -49,45 +55,34 @@ class MainActivity : AppCompatActivity() {
 
                 mHandler?.removeCallbacksAndMessages(null)
                 mHandler?.sendEmptyMessageDelayed(0, 3000)
+
+                var scrollPosition: Int = 0
+                for (index in mDataList.indices) {
+                    if (world == mDataList[index].name) {
+                        scrollPosition = index
+                        break
+                    }
+                }
+
+                // RecyclerView滑动并且置顶
+                val mScroller = TopSmoothScroller(this@MainActivity)
+                mScroller.targetPosition = scrollPosition
+                mRecyclerView.layoutManager?.startSmoothScroll(mScroller)
             }
         })
 
-        for (index in 0 until mPersons.size) {
-            val person = mPersons[index]
-//            val nextPersonIndex = index + 1
-//            if (nextPersonIndex >= mPersons.size) {
-//                return
-//            }
-//            val nextPerson = mPersons[nextPersonIndex]
-//            if (person.pinyin.substring(0, 1).equals(nextPerson.pinyin.substring(0, 1))) {
-//
-//            } else {
-//
-//            }
-
-
-            if (index == 0) {
-                mDataList.add(RecyclerViewDataBean(person.pinyin.substring(0, 1), 0))
-                mDataList.add(RecyclerViewDataBean(person.name, 1))
-            } else {
-                val nextPersonIndex = index + 1
-                if (nextPersonIndex >= mPersons.size) {
-                    mDataList.add(RecyclerViewDataBean(person.name, 1))
-                    return
-                }
-                val nextPerson = mPersons[nextPersonIndex]
-
-                if (person.pinyin.substring(0, 1) == nextPerson.pinyin.substring(0, 1)) {
-                    mDataList.add(RecyclerViewDataBean(person.name, 1))
-                } else {
-                    mDataList.add(RecyclerViewDataBean(person.name, 1))
-                    mDataList.add(RecyclerViewDataBean(nextPerson.pinyin.substring(0, 1), 0))
-                }
-            }
-        }
-
         mRecyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         mRecyclerView.adapter = RecyclerViewAdapter(mDataList)
+    }
+
+    class TopSmoothScroller(context: Context) : LinearSmoothScroller(context) {
+        override fun getHorizontalSnapPreference(): Int {
+            return SNAP_TO_START
+        }
+
+        override fun getVerticalSnapPreference(): Int {
+            return SNAP_TO_START
+        }
     }
 
     /**
@@ -129,6 +124,23 @@ class MainActivity : AppCompatActivity() {
         //排序
         Collections.sort(mPersons) { lhs, rhs ->
             lhs.pinyin.compareTo(rhs.pinyin)
+        }
+
+        // 填充adapter的数据
+        for (index in 0 until mPersons.size) {
+            val person = mPersons[index]
+            if (index == 0) {
+                mDataList.add(RecyclerViewDataBean(person.pinyin.substring(0, 1), 0))
+                mDataList.add(RecyclerViewDataBean(person.name, 1))
+            } else {
+                val prePerson = mPersons[index - 1]
+                if (person.pinyin.substring(0, 1) == prePerson.pinyin.substring(0, 1)) {
+                    mDataList.add(RecyclerViewDataBean(person.name, 1))
+                } else {
+                    mDataList.add(RecyclerViewDataBean(person.pinyin.substring(0, 1), 0))
+                    mDataList.add(RecyclerViewDataBean(person.name, 1))
+                }
+            }
         }
     }
 }
