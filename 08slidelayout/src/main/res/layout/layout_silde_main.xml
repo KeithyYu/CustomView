@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guangkai.slidelayout.SlideLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="66dp">
+
+    <include android:id="@+id/slide_main_text" layout="@layout/slide_main"/>
+    <include android:id="@+id/slide_delete" layout="@layout/slide_delete"/>
+</com.guangkai.slidelayout.SlideLayout>
